@@ -12,7 +12,7 @@ struct segtree{ // zero indexing
         int size;
         vector<item> arr;
 
-        const item NU= INT_MIN; //value don't change the function 0 for sum INT_MAX or min ...
+        const item NU= INT_MIN; //value don't change the function 0 for sum, INT_MAX for min ...
 
         item single(int val) { // what is in the leaf of the tree
                 return val;
