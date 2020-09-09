@@ -1,5 +1,5 @@
-// range query update point (add(v[i]), update(delta))
-// range update point query (add(delate), update(v[i]))
+// range query update point (add(v[i]), update(delta))-> first code
+// range update point query (add(delate), update(v[i]))-> second code
 const int N= 2e5+ 10;
 
 int y[N];
@@ -43,7 +43,9 @@ void solve() {
                 }
         }
 }
-////////////
+
+// This Range qyeary update 
+
 #include <bits/stdc++.h>
 using namespace std;
 #define pr(args...) { string _s = #args; replace(_s.begin(), _s.end(), ',', ' '); stringstream _ss(_s); istream_iterator<string> _it(_ss); err(_it, args); }
