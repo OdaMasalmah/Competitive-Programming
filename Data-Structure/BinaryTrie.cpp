@@ -9,7 +9,7 @@ using namespace std;
 WE CAN GET MAX OR MIN XOR between x and several number
 
 This code
-add & remove number and remove to the tree
+add & remove number to the tree
 get the min xor with x on the added number and get the index of it
 
 This code solve this problem
