@@ -9,7 +9,7 @@ int rand(int a, int b) {
 
 int main() {
 
-        freopen("C:\\Users\\lenovo\\Desktop\\Desktop\\test_Masalmah\\in.txt", "w", stdout);
+        freopen("C:\\Users\\lenovo\\Desktop\\Desktop\\test_Masalmah\\in.txt", "w", stdout); // output file
 
         srand(time(0));
 
