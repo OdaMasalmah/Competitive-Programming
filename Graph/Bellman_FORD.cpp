@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define lp(i, n) for(int i = 0; i < n; i++)
 #define all(v) v.begin(), v.end()
 #define int long long
 #define mod 1000000007
