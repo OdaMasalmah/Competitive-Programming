@@ -38,7 +38,7 @@ void B_F(int f, int n) {
 
 void solve() {
         int n, m; cin >> n>> m;
-        lp(i, m) {
+        for (int i= 0; i< m; i++) {
                 int u, v, c; cin >> u>> v>> c;
                 g.push_back(edge(u, v, c));
                 g.push_back(edge(v, u, c));
