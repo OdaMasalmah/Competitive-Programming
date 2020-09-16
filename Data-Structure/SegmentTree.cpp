@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define all(v) (v).begin(), (v).end()
-#define lp(i, n) for (int i = 0; i < (n) ; ++i)
-#define sz(v) (ll)(v).size()
+#define sz(v) (int)(v).size()
 #define int long long
+#define mod 1000000007 // ((a- b)% mod+ mod)% mod
 
 typedef int item;
 
@@ -74,19 +74,20 @@ struct segtree{ // zero indexing
                 return calc(l, r, 0, 0, size);
         }
 
-        int first_above(int val, int x, int l, int r) {
+        int first_above(int gl, int gr, int val, int x, int l, int r) {
+                if (l>= gr|| r<= gl) return -1;
                 if (arr[x]< val) return -1;
                 if (r- l== 1) return l;
                 int md= (l+ r)/ 2;
-                int an= first_above(val, x* 2+ 1, l, md);
+                int an= first_above(gl, gr, val, x* 2+ 1, l, md);
                 if (an== -1) {
-                        an= first_above(val, x* 2+ 2, md, r);
+                        an= first_above(gl, gr, val, x* 2+ 2, md, r);
                 }
                 return an;
         }
 
-        int first_above(int x) {
-                return first_above(x, 0, 0, size);
+        int first_above(int x, int l, int r) {
+                return first_above(l, r, x, 0, 0, size);
         }
 };
 
@@ -94,7 +95,7 @@ void solve() {
         int n, q; cin >> n>> q;
 
         vector<int> v(n);
-        lp(i, n) cin >> v[i];
+        for(int i= 0; i< n; i++) cin >> v[i];
 
         segtree st;
         st.init(n);
@@ -102,21 +103,20 @@ void solve() {
 
         while (q--) {
                 int x; cin >> x;
-                int pos= st.first_above(x);
+                int pos= st.first_above(x, 0, n);
                 cout << (pos== -1? 0: pos+ 1)<< " ";
                 if (pos!= -1) {
                         st.set(pos, v[pos]- x);
                         v[pos]= v[pos]- x;
                 }
         }
-
 }
 
 int32_t main(){
 ios::sync_with_stdio(0), cin.tie(NULL), cout.tie(NULL);
-        int t = 1;
-        //cin >> t;
-        while ( t-- ) {
+        int T= 1;
+        //cin >> T;
+        while ( T-- ) {
                 solve();
         }
 return 0;
