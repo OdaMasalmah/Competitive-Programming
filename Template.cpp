@@ -3,7 +3,7 @@ using namespace std;
 #define all(v) (v).begin(), (v).end()
 #define int long long
 #define sz(v) (int)(v).size()
-#define mod 1000000007 // ((a- b)% mod+ mod)% mod
+#define mod 1000000007
 
 void solve() {
 
