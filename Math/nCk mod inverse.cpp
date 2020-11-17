@@ -1,45 +1,37 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-#define all(v) (v).begin(), (v).end()
-#define int long long
-#define sz(v) (int)(v).size()
-#define mod 1000000007 // ((a- b)% mod+ mod)% mod
+using ll= long long;
+const int MOD= 1e9+ 7;
+const int N= 1e6+ 1;
+ll f[N], inv[N];
 
-const int N = 2000001;
-int f[N], inv[N];
-
-int fastPower(int a, int b) {
-	if (b == 0)
-		return 1;
-	int res = fastPower(a, b / 2);
-	if (b % 2 == 1)
-		return ((res* res) % mod* a) % mod;
-	return (res* res) % mod;
+ll fast_power(ll a, ll b) {
+    ll pw= a, an= 1;
+    while (b> 0) {
+        if (b& 1) {
+            an= (pw% MOD* an% MOD)% MOD;
+        }
+        b>>= 1;
+        pw= (pw% MOD* pw% MOD)% MOD;
+    }
+    return an;
 }
 
-int nCk(int n, int k) {
-	return ((f[n] * inv[k]) % mod* inv[n - k]) % mod;
+ll nCk(int n, int k) {
+    return ((f[n]* inv[k])% MOD* inv[n- k]% MOD)% MOD;
 }
 
-void solve() {
-	f[0] = 1;
-	inv[0] = fastPower(1, mod - 2);
-	for (int i = 1; i< N; ++i) {
-		f[i] = (i* f[i - 1]) % mod;
-		inv[i] = fastPower(f[i], mod - 2);
-	}
-
-	int n, m; cin >> n >> m;
-	n = n + m - 1;
-	cout << nCk(n, m);
-}
-
-int32_t main() {
-	ios::sync_with_stdio(0), cin.tie(NULL), cout.tie(NULL);
-	int T = 1;
-	//cin >> T;
-	while (T--) {
-		solve();
-	}
-	return 0;
+int main() {
+ios::sync_with_stdio(0), cin.tie(NULL), cout.tie(NULL);
+    f[0]= 1;
+    inv[0]= 1;
+    for (int i= 1; i< N; i++) {
+        f[i]= (f[i- 1]* i)% MOD;
+        inv[i]= fast_power(f[i], MOD- 2);
+    }
+    int t; cin >> t; while (t--) {
+        int a, b; cin >> a>> b;
+        cout << nCk(a, b)<< "\n";
+    }
+    return 0;
 }
