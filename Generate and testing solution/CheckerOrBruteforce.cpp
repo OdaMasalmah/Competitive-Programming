@@ -5,6 +5,12 @@ using namespace std;
 #define sz(v) (int)(v).size()
 #define mod 1000000007 // ((a- b)% mod+ mod)% mod
 
+struct timer {
+    unsigned long long begin_cycle;
+    double get_time() { return 1.0* (clock()- begin_cycle)/ CLOCKS_PER_SEC; }
+    void init() { begin_cycle= clock(); }
+} timer;
+
 
 void solve(int tt) {
 
